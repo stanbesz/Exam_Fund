@@ -1,0 +1,46 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+#include <cmath>
+#include <list>
+#include <iomanip>
+#include <algorithm>
+#include <sstream>
+#include <unordered_set>
+
+
+
+int main() {
+	char arr[100];
+	int num = 0;
+	std::cin >> num;
+	std::vector<char> numbers;
+	std::vector<char> alphabet;
+	std::vector<char> others;
+	for (int i = 0; i < num; i++) {
+		std::cin >> arr[i];
+		if (isdigit(arr[i])) {
+			numbers.push_back(arr[i]);
+		}
+		else if (isalpha(arr[i])&&islower(arr[i])) {
+			alphabet.push_back(arr[i]);
+		}
+		else {
+			others.push_back(arr[i]);
+		}
+	}
+
+	for (int i = 0; i < numbers.size(); i++) {
+		std::cout << numbers[i] << " ";
+	}
+	std::cout<<std::endl;
+	for (int i = 0; i < alphabet.size(); i++) {
+		std::cout << alphabet[i] << " ";
+	}
+	std::cout << std::endl;
+	for (int i = 0; i < others.size(); i++) {
+		std::cout << others[i] << " ";
+	}
+	
+}
