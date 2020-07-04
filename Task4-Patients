@@ -1,0 +1,87 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+#include <cmath>
+#include <list>
+#include <iomanip>
+#include <algorithm>
+#include <sstream>
+#include <unordered_set>
+#include <cstring>
+
+class Date {
+public:
+	int day;;
+	int month;
+	int year;
+	Date() {
+		this->day = 0;
+		this->month = 0;
+		this->year = 0;
+
+	}
+	Date(int day, int month, int year) {
+		this->day = day;
+		this->month = month;
+		this->year = year;
+	}
+	char setDay(int day) {
+		this->day = day;
+	}
+	char setMonth(int month) {
+		this->month = month;
+	}
+	char setYear(int year) {
+		this->year = year;
+	}
+	void printDate() {
+		std::cout << this->day << "/" << this->month << "/" << this->year;
+	}
+};
+
+class Patient {
+public:
+	std::string name;
+	Date date;
+	int visits;
+public:
+	Patient(std::string name, Date date, int visits){
+		this->date = date;
+		this->name = name;
+		this->visits = visits;
+	}
+	int getVisits() {
+		return this->visits;
+	}
+};
+void calcVisits(std::vector<Patient> patients) {
+	int sum = 0;
+	for (int i = 0; i < patients.size(); i++) {
+		sum = sum + patients[i].getVisits();
+	}
+	std::cout << "Number of visits: " << sum;
+}
+
+int main(){
+	int num = 0;
+	std::cin >> num;
+	std::cin.ignore();
+	std::vector<Patient> patients;
+	for (int i = 0; i < num; i++) {
+		std::cout << "Enter name: ";
+		std::string name; std::getline(std::cin,name);
+		std::cout << "Enter date"<<std::endl;
+		std::cout << "Enter day: "; int day; std::cin >> day;std::cout<< std::endl;
+		std::cout << "Enter month: "; int month; std::cin >>month; std::cout << std::endl;
+		std::cout << "Enter year: "; int year; std::cin >> year; std::cout << std::endl;
+		Date date(day, month, year);
+		date.printDate();
+		std::cout << std::endl;
+		std::cout << "Enter visits: "; int visits = 0; std::cin >> visits;
+		std::cin.ignore();
+		Patient patient(name, date, visits);
+		patients.push_back(patient);
+	}
+	calcVisits(patients);
+}
