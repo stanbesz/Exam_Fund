@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include <map>
+#include <vector>
+#include <cmath>
+#include <list>
+#include <iomanip>
+#include <algorithm>
+#include <sstream>
+#include <unordered_set>
+
+int calcDiag(std::vector<std::vector<int>> matrix) {
+	int sum = 0;
+	for (int i = 0; i < matrix.size(); i++) {
+		for (int j = 0; j < matrix.size(); j++) {
+			if (i+j<matrix.size()-1&&i<j) {
+				sum = sum + matrix[i][j];
+				
+			}
+		}
+		
+	}
+	return sum;
+}
+
+int main() {
+	std::cout << "Enter size of matrix" << std::endl;
+	int size = 0;
+	std::cin >> size;
+	std::vector<std::vector<int>> matrix;
+	for (int i = 0; i < size; i++) {
+		std::vector<int> row;
+
+		for (int j = 0; j < size; j++) {
+			int num = 0;
+			std::cin >> num;
+			row.push_back(num);
+		}
+		matrix.push_back(row);
+		row.clear();
+	}
+	for (int i = 0; i < matrix.size(); i++) {
+		for (int j = 0; j < size; j++) {
+			std::cout << matrix[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
+
+	std::cout << calcDiag(matrix);
+}
